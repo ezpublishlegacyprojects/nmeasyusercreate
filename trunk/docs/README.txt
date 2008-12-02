@@ -1,0 +1,1 @@
+An extension for storing users objects by simply inputting their email address.

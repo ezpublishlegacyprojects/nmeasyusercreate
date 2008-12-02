@@ -1,0 +1,44 @@
+INSTALLATION OF EASYUSERCREATE EXTENSION
+
+An extension for storing users objects by simply inputting their email address.
+
+Extension dependencies: none
+
+These installation instructions apply to version 3.5.x ->
+
+1. Edit easyusercreate/settings/usercreate.ini.append.php to suit your environment.
+
+2. Upload the dir "easyusercreate" and all of its contents to the
+ezp_root/extension directory.
+
+3. Activate the extension by logging ino the admin area, going to Setup
+-> Extensions, selecting the "easyusercreate" extension, and clicking
+the "Activate changes" button.
+
+4. Give the anonymous role unlimited access to the "createuser"
+functions of the "easyusercreate" module. This is done by logging into the admin 
+area, going to "User accounts" and then clicking "Roles and access rules"
+in the left column. Click the pencil corresponding with the Anonymous role
+to edit it. Click "New access rule" to add an access rule. In step 1,
+choose the "easyusercreate" module and then, "Give access to one function". In
+step 2, select the function "createuser" and click the button "Give full access".
+Finally, click "OK" to save your changes to the Anonymous role.
+
+5. Clear the cache by logging into the admin area, going to Setup ->
+Cache management and clicking the "Empty all caches" button.
+
+6. Include a form containing the following form fields where you want users
+to be able to input their email address and store an account. Alter the hidden
+field UserGroupNodeID to specify in which user group the user should be stored.
+If the form field is left out, the extension will use the default user group
+specified in the ini setting
+
+<!-- start form -->
+<form action={"easyusercreate/do"|ezurl} method="post">
+	<input type="hidden" name="UserGroupNodeID" value="" />
+	<p>Insert your email address:</p>
+	<p><input type="text" name="EmailAddress"/></p>
+	<p><input name="Submit" type="submit" value="Send" />
+
+</form>
+<!-- end form -->
